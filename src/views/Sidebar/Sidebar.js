@@ -2,11 +2,14 @@ import React from 'react';
 import { Menu, Sidebar } from 'semantic-ui-react';
 import '../../Semantic-UI-CSS-master/semantic.min.css';
 import MenuItem from './MenuItem';
-import Database from "../DBsControl/HomePage";
-import DatabaseBackup from "../DBsControl/BackupPage";
-import Links from "../Links/HomePage";
 
 const SidebarApp = () => {
+    const items = [{key: 1, iconText: 'Backup & Restore', iconName: 'database'},
+                   {key: 2, iconText: 'Documentation', iconName: 'dochub'},
+                   {key: 3, iconText: 'Docker CLI', iconName: 'docker'},
+                   {key: 4, iconText: 'servers', iconName: 'server'},
+                   {key: 5, iconText: 'services', iconName: 'wheelchair'}];
+
     return(
         <Sidebar
             as={Menu}
@@ -18,9 +21,11 @@ const SidebarApp = () => {
             visible
             width='thin'
         >
-            <MenuItem iconName='database' iconText='Backup and restore' path='/backup' link={Database}/>
-            <MenuItem iconName='dochub' iconText='Documentation'/>
-            <MenuItem iconName='docker' iconText='Docker CLI'/>
+            {items.map((item =>
+                <MenuItem
+                    key={item.key} iconName={item.iconName} iconText={item.iconText}
+                />
+            ))}
         </Sidebar>
     );
 };
