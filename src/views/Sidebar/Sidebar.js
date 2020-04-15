@@ -8,7 +8,7 @@ const SidebarApp = () => {
             {key: 1, iconText: 'Backup & Restore', iconName: 'database', path: '/database'},
             {key: 2, iconText: 'Documentation', iconName: 'dochub', path: '/database'},
             {key: 3, iconText: 'Docker CLI', iconName: 'docker', path: '/database'},
-            {key: 4, iconText: 'Servers', iconName: 'server', path: '/database'},
+            {key: 4, iconText: 'Servers', iconName: 'server', path: '/servers'},
             {key: 5, iconText: 'Services', iconName: 'wheelchair', path: '/database'}
         ];
 

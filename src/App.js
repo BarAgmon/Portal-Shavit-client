@@ -17,7 +17,7 @@ function App() {
               <Switch>
                     <Route path="/backup" component={DatabaseBackup}/>
                     <Route path="/database" component={Database}/>
-                    <Route path="/Servers" component={Servers}/>
+                    <Route path="/servers" component={Servers}/>
                     <Route path="/" component={Links}/>
                 </Switch>
             </Router>
