@@ -28,7 +28,7 @@ const SidebarApp = () => {
                     key={item.key}
                     iconName={item.iconName}
                     iconText={item.iconText}
-                    path='/database'
+                    path={item.path}
                 />
             ))}
         </Sidebar>
