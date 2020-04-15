@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Database from "./views/DBsControl/HomePage";
 import DatabaseBackup from "./views/DBsControl/BackupPage";
 import Links from "./views/Links/HomePage";
+import Servers from "./views/Servers/Servers";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Switch>
                     <Route path="/backup" component={DatabaseBackup}/>
                     <Route path="/database" component={Database}/>
+                    <Route path="/Servers" component={Servers}/>
                     <Route path="/" component={Links}/>
                 </Switch>
             </Router>
