@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import SidebarApp from "./views/Sidebar/Sidebar";
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Database from "./views/DBsControl/HomePage";
-import DatabaseBackup from "./views/DBsControl/BackupPage";
+import DatabaseBackup from "./views/DBsControl/Backup/BackupPage";
 import Links from "./views/Links/HomePage";
-
+import RestorePage from './views/DBsControl/Restore/RestorePage';
 function App() {
   return (
         <AppDesign className="App">
@@ -15,6 +15,7 @@ function App() {
             <Router>
               <Switch>
                     <Route path="/backup" component={DatabaseBackup}/>
+                    <Route path="/restore" component={RestorePage}/>
                     <Route path="/database" component={Database}/>
                     <Route path="/" component={Links}/>
                 </Switch>

@@ -2,9 +2,6 @@ import React from 'react';
 import { Menu, Sidebar } from 'semantic-ui-react';
 import '../../Semantic-UI-CSS-master/semantic.min.css';
 import MenuItem from './MenuItem';
-import Database from "../DBsControl/HomePage";
-import DatabaseBackup from "../DBsControl/BackupPage";
-import Links from "../Links/HomePage";
 
 const SidebarApp = () => {
     return(
@@ -18,7 +15,7 @@ const SidebarApp = () => {
             visible
             width='thin'
         >
-            <MenuItem iconName='database' iconText='Backup and restore' path='/backup' link={Database}/>
+            <MenuItem iconName='database' iconText='Backup and restore' path='/database'/>
             <MenuItem iconName='dochub' iconText='Documentation'/>
             <MenuItem iconName='docker' iconText='Docker CLI'/>
         </Sidebar>

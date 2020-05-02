@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import OptionsDiv from './OptionsDiv'
-import BackgroundImg from '.././../images/database.jpg';
+import OptionsDiv from './Backup/OptionsDiv'
+import BackgroundImg from '../../images/database.jpg';
 
 export default function HomePage() {
   return (

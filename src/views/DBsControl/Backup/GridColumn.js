@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 export default function GridColumn({iconName, text, buttonType, buttonContent, path}){
-    debugger;
     return (
         <SizeGridColumn>
             <PlaceComponents icon>
