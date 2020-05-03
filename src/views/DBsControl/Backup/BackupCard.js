@@ -35,7 +35,6 @@ const PlaceButton = styled.div`
 `;
 const Div = styled.div`
     display: flex;
-    flex: 50% 0 0;
     margin-top: 2em;
 `;
 BackupCard.propTypes = {

@@ -3,29 +3,38 @@ import axios from 'axios';
 import styled from 'styled-components';
 import {UploadOutlined} from '@ant-design/icons';
 import BackupCard from "./BackupCard";
+import {message} from 'antd';
+
+const GET_ALL_POSTGRES_DB='/api/v1/shavit/dbs/postgres/dbs';
+const GET_ALL_MONGO_DB='/api/v1/shavit/dbs/mongo/dbs';
 
 export default function BackupPage() {
-    const [postgresDatabases, setPostgresDatabases] = useState([])
-    useEffect(() => {
-        axios.get('http://localhost:80/postgres/databases').then((response)=>{
-            setPostgresDatabases(response.data.databases.map((db)=> {
+    const getDataFromServer = (path,setState) => {
+        axios.get(path).then((response)=>{
+            setState(response.data.map((db)=> {
                 return {
-                    key: JSON.parse(db).name,
-                    title : JSON.parse(db).name
+                    key: db,
+                    title : db
                 };
             }));
         }).catch((err)=>{
-            alert(err);
+            message.error("Connection with server has lost. Please try again")
         })
-    });
+    };
+    const [postgresDatabases, setPostgresDatabases] = useState([])
+    const [mongoDatabases, setMongoDatabases] = useState([])
+    useEffect(() => {
+        getDataFromServer(GET_ALL_POSTGRES_DB,setPostgresDatabases);
+        getDataFromServer(GET_ALL_MONGO_DB,setMongoDatabases);
+    }, []);
     return(
         <Background>
             <Header>Backup<UploadOutlined /></Header>
             <PlaceCards>
                 <BackupCard title="Postgres Databases" data={postgresDatabases} leftTitle="DBs" rightTitle="Selected"/>
                 <BackupCard title="Postgres Schemas" data={postgresDatabases} leftTitle="Schemas" rightTitle="Selected"/>
-                <BackupCard title="Mongo Databases" data={postgresDatabases} leftTitle="DBs" rightTitle="Selected"/>
-                <BackupCard title="Mongo Collections" data={postgresDatabases} leftTitle="Collections" rightTitle="Selected"/>
+                <BackupCard title="Mongo Databases" data={mongoDatabases} leftTitle="DBs" rightTitle="Selected"/>
+                <BackupCard title="Mongo Collections" data={mongoDatabases} leftTitle="Collections" rightTitle="Selected"/>
             </PlaceCards>      
         </Background>          
     );
@@ -44,10 +53,9 @@ const PlaceCards = styled.div`
     align-content : center;
     justify-content:space-around;
     flex-wrap: wrap;
-    margin-left : 11em;
 `;
 const Header = styled.h1`
     font-size: 2em;
     color: white;
-    font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 `;
