@@ -23,7 +23,6 @@ const SidebarApp = () => {
             visible
             width='thin'
         >
-<<<<<<< HEAD
             {items.map((item =>
                 <MenuItem
                     key={item.key}
@@ -32,11 +31,6 @@ const SidebarApp = () => {
                     path={item.path}
                 />
             ))}
-=======
-            <MenuItem iconName='database' iconText='Backup and restore' path='/database'/>
-            <MenuItem iconName='dochub' iconText='Documentation'/>
-            <MenuItem iconName='docker' iconText='Docker CLI'/>
->>>>>>> 4b8b271e11ab052da801573b4cdc5582c0d973cf
         </Sidebar>
     );
 };

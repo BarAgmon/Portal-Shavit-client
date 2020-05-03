@@ -6,7 +6,7 @@ export default function Servers() {
     const [servers, setServers] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/v1/shavit/resources/servers').then((response)=>{
+        axios.get('/api/v1/shavit/resources/servers').then((response)=>{
             setServers(response.data.servers.map((server)=> {
                 return {
                     key: JSON.parse(server).name,
