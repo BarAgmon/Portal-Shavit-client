@@ -10,7 +10,6 @@ export default function Servers() {
             setServers(response.data.servers.map((server)=> {
                 return {
                     key: JSON.parse(server).name,
-                    title : JSON.parse(server).name
                 };
             }));
         }).catch((err)=>{
