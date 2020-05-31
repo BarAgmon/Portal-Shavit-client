@@ -2,12 +2,27 @@ import React,{useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Button, Card} from 'antd';
 
-export default function MainCard({cardTitle, cardContent, buttonText, disableButton}) {
+export default function StepContentCard({cardTitle, cardContent, currentStep, setCurrentStep , numOfSteps}) {
+    const [nextButtonText, setNextButtonText] = useState("Next");
+    const prevStep = () => {
+        setCurrentStep(currentStep--);
+        if(nextButtonText == "Finish"){
+            setNextButtonText("Next");
+        }
+    };
+    
+    const nextStep = () => {
+        setCurrentStep(currentStep++);
+        if(currentStep == (numOfSteps - 1)){
+            setNextButtonText("Finish");
+        }
+    };
     return(
         <DesignedCard title={cardTitle}>              
             {cardContent}
             <PlaceButton>   
-                <ColorButtonText ghost className={disableButton ? 'disabled' : ''}>{buttonText}</ColorButtonText>        
+                <ColorButtonText ghost onClick={prevStep}>Prev</ColorButtonText>
+                <ColorButtonText ghost onClick={nextStep}>{nextButtonText}</ColorButtonText>        
             </PlaceButton>
         </DesignedCard>
     ) 

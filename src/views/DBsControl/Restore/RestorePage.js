@@ -3,21 +3,49 @@ import styled from 'styled-components';
 import {Button} from 'antd';
 import {SyncOutlined} from '@ant-design/icons';
 import BackupFilesList from './BackupFilesList';
-import MainCard from './MainCard';
+import StepContentCard from './StepContentCard';
 import RestoreDatabase from './RestoreDatabase';
+import { Steps } from 'antd';
+
+const { Step } = Steps;
 
 export default function RestorePage() {
-    const [disableButton, setDisableButton]=useState(true);
+    const [currentStep, setCurrentStep] = useState(0);
+    const [selectedDbType, setSelectedDbType] = useState();
+    const [whatIsRestored, setWhatIsRestored] = useState();
     const [selectedFile, setSelectedFile]=useState({});
-    //var content = <BackupFilesList setDisableButton={setDisableButton} setSelectedFile={setSelectedFile}/>;
-    var content = <RestoreDatabase setDisableButton={setDisableButton}/>
+    const steps = [
+        {
+            title : "DB Type",
+            cardTitle: "Choose the DB type you would like to restore:",
+            content : <div/> 
+        },
+        {
+            title : "What to restore?",
+            cardTitle : "Choose what you would like to restore:",
+            content : <div/>
+        },
+        {
+            title : "Choose backup file",
+            cardTitle : "Choose the backup file to restore from:",
+            content :<BackupFilesList setSelectedFile={setSelectedFile}/>
+        },
+        {
+            title : "Before we finish...",
+            cardTitle : "Whould you like to restore to the same or to a new one?" ,
+            content : <RestoreDatabase/>
+        }
+    ];
+
     return(
         <Background>
             <Header> Restore <SyncOutlined/></Header>
-            <MainCard cardTitle="Choose the backup file to restore from:" 
-                      cardContent={content} 
-                      buttonText="Next" 
-                      disableButton={disableButton}/>              
+            <Steps current={currentStep}>
+                {steps.map(item => (
+                    <Step key={item.title} title={item.title}/>
+                ))}
+            </Steps>
+            {steps[currentStep].content}             
         </Background>
     ) 
 }
